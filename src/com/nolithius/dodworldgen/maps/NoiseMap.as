@@ -6,11 +6,15 @@ package com.nolithius.dodworldgen.maps
 	
 	
 	/**
-	 * ...
+	 * Perlin Noise Map
 	 * @author Ebyan Alvarez-Buylla
 	 */
 	public class NoiseMap extends Map
 	{
+		/**
+		 * Constructor.
+		 * Generate a Perlin Noise Map.
+		 */
 		public function NoiseMap()
 		{
 			init();
@@ -28,6 +32,7 @@ package com.nolithius.dodworldgen.maps
 				tiles[ix][iy].elevation = pixels[i] & 0x0000FF;
 			}
 			
+			// No need to normalize if this map will be multiplied later on.
 			//normalize();
 		}
 	}

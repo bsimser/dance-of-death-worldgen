@@ -7,10 +7,17 @@
 	import com.nolithius.dodworldgen.maps.NoiseMap;
 	import com.nolithius.dodworldgen.maps.RollingParticleMap;
 	import com.nolithius.dodworldgen.screen.Screen;
-			
 	
+	
+	/**
+	 * Dance of Death Worldgen Document Class
+	 * @author Ebyan Alvarez-Buylla
+	 */
 	public class DanceOfDeathWorldgen extends Sprite
 	{
+		/**
+		 * Constructor
+		 */
 		public function DanceOfDeathWorldgen()
 		{
 			// Initialize the screen
@@ -22,6 +29,10 @@
 		}
 		
 		
+		/**
+		 * Generate a map.
+		 * Called on load and on mouse click.
+		 */
 		private function generate():void
 		{
 			// Generate noise map
@@ -44,6 +55,11 @@
 		}
 		
 		
+		/**
+		 * Handle mouse click.
+		 * Generates a new map.
+		 * @param	event	The MouseEvent that invoked this mouseclick.
+		 */
 		private function handleClick(event:MouseEvent):void
 		{
 			generate();

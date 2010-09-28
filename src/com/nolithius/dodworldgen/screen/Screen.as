@@ -13,8 +13,8 @@
 		// Constants
 		public static const TILE_WIDTH:uint = 8;
 		public static const TILE_HEIGHT:uint = 12;
-		public static const SCREEN_TILES_X:uint = 80;
-		public static const SCREEN_TILES_Y:uint = 38;
+		public static const SCREEN_TILES_X:uint = 88;
+		public static const SCREEN_TILES_Y:uint = 32;
 		public static const SCREEN_WIDTH:uint = TILE_WIDTH*SCREEN_TILES_X;
 		public static const SCREEN_HEIGHT:uint = TILE_HEIGHT*SCREEN_TILES_Y;
 				

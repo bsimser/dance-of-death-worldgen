@@ -1,5 +1,9 @@
 ﻿package com.nolithius.dodworldgen.maps
 {
+	/**
+	 * Terrain tile type definitions.
+	 * @author Ebyan Alvarez-Buylla
+	 */
 	public class TerrainTileTypes
 	{
 		public static const TERRAIN_TILE_TYPES:Array = new Array

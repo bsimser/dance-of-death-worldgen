@@ -25,6 +25,12 @@ package com.nolithius.dodworldgen.maps
 		public static const TILE_COLOR_LIME_GREEN:uint = 0x00FF00;
 		public static const TILE_COLOR_WHITE:uint = 0xFFFFFF;
 		public static const TILE_COLOR_YELLOW:uint = 0xFFFF00;
+		
+		private static const SHALLOW_WATER_THRESHOLD:uint = 100;
+		private static const COASTLINE_THRESHOLD:uint = 15;
+		private static const PLAINS_THRESHOLD:uint = 35;
+		private static const MOUNTAIN_THRESHOLD:uint = 25;
+		private static const HILL_THRESHOLD:uint = 50;
 				
 		
 		public var x:uint;
@@ -38,42 +44,56 @@ package com.nolithius.dodworldgen.maps
 		private var _type:uint;
 		
 		
-		public function TerrainTile(p_x:uint, p_y:uint, p_type:uint = 0)
+		/**
+		 * Constructor
+		 * @param	p_x		X position.
+		 * @param	p_y		Y position.
+		 */
+		public function TerrainTile(p_x:uint, p_y:uint)
 		{
 			x = p_x;
 			y = p_y;
-			
-			if (p_type)
-			{
-				type = p_type;
-			}
 		}
 		
 		
+		/**
+		 * Getter: type.
+		 */
 		public function get type():uint
 		{
 			return _type;
 		}
 		
 		
+		/**
+		 * Setter: type.
+		 * Grab the corresponding tile type definition in TerrainTileTypes and apply properties.
+		 */
 		public function set type(value:uint):void
 		{
 			_type = value;
 			
 			var tileType:Object = TerrainTileTypes.TERRAIN_TILE_TYPES[value];
 			
-			name = tileType.name;
-			ascii = tileType.ascii;
-			foregroundColor = tileType.foregroundColor;
-			backgroundColor = tileType.backgroundColor;
+			if (tileType)
+			{
+				name = tileType.name;
+				ascii = tileType.ascii;
+				foregroundColor = tileType.foregroundColor;
+				backgroundColor = tileType.backgroundColor;
+			}
 		}
 		
 		
+		/**
+		 * Set the terrain tile type by elevation.
+		 * @param	waterLine
+		 */
 		public function setTypeByElevation(waterLine:uint = 128):void
 		{
 			if (elevation < waterLine)
 			{
-				if (elevation > 100)
+				if (elevation > SHALLOW_WATER_THRESHOLD)
 				{
 					type = TERRAIN_TILE_TYPE_SHALLOW_WATER;
 				}
@@ -84,19 +104,19 @@ package com.nolithius.dodworldgen.maps
 			}
 			else
 			{
-				if (elevation < waterLine + 15)
+				if (elevation < waterLine + COASTLINE_THRESHOLD)
 				{
 					type = TERRAIN_TILE_TYPE_COASTLINE;
 				}
-				else if (elevation < waterLine + 35)
+				else if (elevation < waterLine + PLAINS_THRESHOLD)
 				{
 					type = TERRAIN_TILE_TYPE_PLAINS;
 				}
-				else if (elevation > 255 - 25)
+				else if (elevation > Map.ELEVATION_MAX - MOUNTAIN_THRESHOLD)
 				{
 					type = TERRAIN_TILE_TYPE_MOUNTAIN;
 				}
-				else if (elevation > 255 - 50)
+				else if (elevation > Map.ELEVATION_MAX - HILL_THRESHOLD)
 				{
 					type = TERRAIN_TILE_TYPE_HILL;
 				}
