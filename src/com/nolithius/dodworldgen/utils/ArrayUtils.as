@@ -37,53 +37,5 @@
 			array[firstIndex] = array[secondIndex];
 			array[secondIndex] = temp;
 		}
-		
-		
-		/**
-		 * Find an element in the provided array.
-		 * @param	array		The array in which to search.
-		 * @param	element		The element to match.
-		 * @param	comparator	The comparator function to apply, if null, executes a standard Array.indexOf()
-		 * @return				The index of the element, if found, otherwise -1.
-		 */
-		public static function find(array:Array, element:*, comparator:Function = null):int
-		{
-			if(comparator != null)
-			{
-				var arrayLength:uint = array.length
-				for(var i:uint = 0; i < arrayLength; i++)
-				{
-					if(comparator(element, array[i]))
-					{
-						return i;
-					}
-				}
-				
-				// Nothing found
-				return -1;
-			}
-			else
-			{
-				return array.indexOf(element);
-			}
-		}
-		
-		
-		/**
-		 * Get a random element from the provided array.
-		 * @param	array	The array from which to grab the random element.
-		 * @return			The random element.
-		 */
-		public static function getRandom(array:Array):*
-		{
-			if (array.length > 0)
-			{
-				return array[Math.round(Math.random() * array.length) - 1];
-			}
-			else
-			{
-				return null;
-			}
-		}
 	}
 }

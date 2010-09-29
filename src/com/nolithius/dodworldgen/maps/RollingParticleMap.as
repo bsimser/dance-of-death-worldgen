@@ -22,16 +22,25 @@ package com.nolithius.dodworldgen.maps
 		 * Constructor.
 		 * Generate a rolling particle map, blur edges, and normalize.
 		 */
-		public function RollingParticleMap()
+		public function RollingParticleMap(centerBias:Boolean = true)
 		{
 			init();
 			
 			for (var iterations:uint = 0; iterations < PARTICLE_ITERATIONS; iterations++)
 			{
 				// Start nearer the center
-				var sourceX:uint = uint(Math.random() * (WIDTH-(EDGE_BIAS*2)) + EDGE_BIAS);
-				var sourceY:uint = uint(Math.random() * (HEIGHT-(EDGE_BIAS*2)) + EDGE_BIAS);
-								
+				if (centerBias)
+				{
+					var sourceX:uint = uint(Math.random() * (WIDTH-(EDGE_BIAS*2)) + EDGE_BIAS);
+					var sourceY:uint = uint(Math.random() * (HEIGHT-(EDGE_BIAS*2)) + EDGE_BIAS);
+				}
+				// Random starting location
+				else
+				{
+					sourceX = uint(Math.random() * (WIDTH - 1));
+					sourceY = uint(Math.random() * (HEIGHT - 1));
+				}
+					
 				for (var length:uint = 0; length < PARTICLE_LENGTH; length++)
 				{
 					sourceX += Math.round(Math.random() * 2 - 1);
@@ -55,7 +64,11 @@ package com.nolithius.dodworldgen.maps
 				}
 			}
 			
-			blurEdges();
+			if (centerBias)
+			{
+				blurEdges();
+			}
+			
 			normalize();
 		}
 		

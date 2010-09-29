@@ -35,19 +35,20 @@
 		 */
 		private function generate():void
 		{
-			// Generate noise map
+			// Step 1: Generate noise map
 			var noiseMap:NoiseMap = new NoiseMap();
+			//noiseMap.normalize();
 			//noiseMap.drawElevation();
 			//noiseMap.setTileTypeByElevation();
 			//noiseMap.draw();
 			
-			// Generate rolling particle map
+			// Step 2: Generate rolling particle map
 			var rollingParticleMap:RollingParticleMap = new RollingParticleMap();
 			//rollingParticleMap.drawElevation();
 			//rollingParticleMap.setTileTypeByElevation();
 			//rollingParticleMap.draw();
 			
-			// Multiply the maps together
+			// Step 3: Multiply the maps together and assign terrain
 			var multiplyMap:MultiplyMap = new MultiplyMap(noiseMap, rollingParticleMap);
 			//multiplyMap.drawElevation();
 			multiplyMap.setTileTypeByElevation();

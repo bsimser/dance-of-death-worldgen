@@ -75,9 +75,8 @@ package com.nolithius.dodworldgen.maps
 		/**
 		 * Normalizes the elevation values from 0 to ELEVATION_MAX, and returns the highest point (useful to place dungeon)
 		 * @param	arr	Array to normalize
-		 * @return		The highest elevation TerrainTile.
 		 */
-		protected function normalize():void
+		public function normalize():void
 		{
 			var smallest:uint = 1000000;	// A large value, INT_MAX would work well here.
 			var largest:uint = 0;
@@ -129,7 +128,7 @@ package com.nolithius.dodworldgen.maps
 			sample.sort(Array.NUMERIC);
 			
 			var threshold:uint = sample[uint(sample.length * waterline)];
-			
+						
 			for (ix = 0; ix < WIDTH; ix++)
 			{
 				for (iy = 0; iy < HEIGHT; iy++)

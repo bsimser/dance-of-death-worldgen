@@ -31,9 +31,6 @@ package com.nolithius.dodworldgen.maps
 				// Set the elevation to the blue value of this noise (grayscale)
 				tiles[ix][iy].elevation = pixels[i] & 0x0000FF;
 			}
-			
-			// No need to normalize if this map will be multiplied later on.
-			//normalize();
 		}
 	}
 }

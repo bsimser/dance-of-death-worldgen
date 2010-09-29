@@ -26,7 +26,7 @@ package com.nolithius.dodworldgen.maps
 		public static const TILE_COLOR_WHITE:uint = 0xFFFFFF;
 		public static const TILE_COLOR_YELLOW:uint = 0xFFFF00;
 		
-		private static const SHALLOW_WATER_THRESHOLD:uint = 100;
+		private static const SHALLOW_WATER_THRESHOLD:uint = 40;
 		private static const COASTLINE_THRESHOLD:uint = 15;
 		private static const PLAINS_THRESHOLD:uint = 35;
 		private static const MOUNTAIN_THRESHOLD:uint = 25;
@@ -93,7 +93,7 @@ package com.nolithius.dodworldgen.maps
 		{
 			if (elevation < waterLine)
 			{
-				if (elevation > SHALLOW_WATER_THRESHOLD)
+				if (elevation > waterLine - SHALLOW_WATER_THRESHOLD)
 				{
 					type = TERRAIN_TILE_TYPE_SHALLOW_WATER;
 				}
