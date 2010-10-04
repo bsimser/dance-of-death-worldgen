@@ -28,8 +28,11 @@
 		
 		public static function init(parent:Sprite)
 		{
+			// Initialize the screen buffer Bitmap
 			screen = new Bitmap(new BitmapData(SCREEN_WIDTH, SCREEN_HEIGHT, false, 0x000000));
 			parent.addChild(screen);
+			
+			// Initialize the ASCII source BitmapData (the Ascii class is attached to the Ascii bitmap in the FLA's library)
 			ascii = new Ascii(1, 1);
 			
 			screenTiles = new Array(SCREEN_TILES_X);
